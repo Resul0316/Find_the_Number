@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: rgb(224, 198, 164);
+}
+.container{
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+    overflow: hidden;
+    margin-top: 150px;
+}
+h1{
+    margin: 2rem;
+    padding: 1rem;
+}
+.guess_title,
+.guess_button,
+.image,
+.explanation,
+.attempts{
+    margin: 1rem;
+    padding: 1rem;
+}
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+}
+button:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+#age_guess{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+}
