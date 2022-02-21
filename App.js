@@ -1,32 +1,56 @@
-let divButton = document.getElementById("button");
-let blankParag = document.getElementById("blank")
+const form = document.querySelector("form");
+const randomNumber =  randomNumberGeneretor();
+const limit = document.getElementById("limit");
+let  guessCount = 1;
 
-let number = [Math.floor[Math.random() * 100]]
+let lowest = 1
+let highest = 100
+const display = function (){
+    limit.innerText = `Enter a number and win! \n (between ${lowest} and ${highest})`;
+}
 
-divButton.addEventListener("click",function(){
-    let input = document.getElementById("age_guess").value ;
-    if (input == number){
-        blankParag.innerHTML = `you gueesed right, your number 
-        was ${number}` 
-    } else if(input < number){
-        blankParag.innerHTML = "you guessed wrong"
-    }if (input>number){
-        blankParag.innerHTML = "You guessed too high"
-    }   
-})
+display()
+console.log("Random Number: ", randomNumber);
+document.getElementById("guessNumber").focus();
 
 
+document.getElementById("button").onclick = function() {      
 
+    // number guessed by user     
+    const guessNumber = +document.getElementById("guessNumber").value;
+    console.log("guessNumber: ", guessNumber);
 
+    if( randomNumber == guessNumber) {    
 
+        limit.innerText =`CONGRATULATIONS!!! \n YOU GUESSED IT RIGHT IN ${guessCount} GUESSES`;
+    }
+    else if(randomNumber < guessNumber) {    
+        guessCount++;
+        if(guessNumber > randomNumber && guessNumber < highest){
+            highest = +guessNumber;
+            display()
+        }
+        alert(`ENTER A SMALLER NUMBER`);
+    }
+    else if (randomNumber > guessNumber) {
+        guessCount++;
+        if(guessNumber > lowest){
+            lowest = +guessNumber;
+            display()
+        }
+        alert(`ENTER A GREATER NUMBER`)
+    }
+    else if (isNaN(guessNumber) ) {
+        alert("PLEASE ENTER A VALID NUMBER!")
+    }
 
+    form.reset();
+    document.getElementById("guessNumber").focus();
 
+ }
 
+ function randomNumberGeneretor(){
+    return Math.floor(Math.random() * 100 + 1);
+ }
 
-
-
-
-
-
-
-
+ 
